@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Book Detail
+{% endblock %}
+
+{% block premain %}
+{% if success_message %}
+<div class="alert alert-success">
+  <strong>Success:</strong> {{ success_message }}
+</div>
+{%endif%}
+{% if error_message %}
+<div class="alert alert-danger">
+  <strong>Error:</strong> {{ error_message }}
+</div>
+{%endif%}
+{% endblock %}
+
+{% block main %}
+<h3>Book Page</h3>
+
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">Book title: {{book.title}}</h5>
+    <hr>
+    <h6>Author: {{ book.author }}</h6>
+    <h6>isbn: {{ book.isbn }}</h6>
+    <h6>Publication year: {{ book.pb_year }}</h6>
+
+    {% if gr_ratings %}
+    <hr>
+    <div
+      style="background-color: #99AC5D; color: #FEFAE0; padding: 2px; padding:5px; padding-top: 10px; padding-left: 15px;">
+      <h6>goodreads average rating: {{ gr_ratings['average_score'] }}</h6>
+      <h6>goodread number of ratings: {{ gr_ratings['reviews_count'] }}</h6>
+    </div>
+    {% endif %}
+
+    {% if reviews %}
+    <hr>
+    <h6 style="color: #606C38">Reviews:</h6>
+    {% for review in reviews %}
+    <p>User : <span style="font-style: italic">{{review.review_user_email}}</span> <span
+        style="background-color: #606C38; color: #FEFAE0; padding: 2px"> Rating : {{review.review_rating}}</span></p>
+    <p>Review: <span style="font-style: italic">{{review.review_text}}</span></p>
+    <p style="font-size:x-small">Review date & time: {{review.review_date}} <span
+        style="font-style: italic">{{review.review_time}}</span>
+    <p>
+      {% endfor %}
+      {% endif %}
+      <hr>
+    <div class="url-link"><a href="{{url_for('new_review', review_isbn=book.isbn) }}">Add a Review</a></div>
+    <div class="url-link"><a href="{{ url_for ('search_book') }}">Search Another book</a></p>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

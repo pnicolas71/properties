@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Search Book
+{% endblock %}
+
+{% block premain %}
+{% if success_message %}
+<div class="alert alert-success">
+    <strong>Success:</strong> {{ success_message }}
+</div>
+{%endif%}
+{% if error_message %}
+<div class="alert alert-danger">
+    <strong>Error:</strong> {{ error_message }}
+</div>
+{%endif%}
+{% endblock %}
+
+{% block main %}
+<form name="search_book" action="/search_book" method="post">
+    <div class="form-group">
+        <input class="form-control" id="search-input" name="search_book"
+            placeholder="enter isbn or author name or book title" type="text">
+    </div>
+    <button class="btn" type="submit">Search for Books</button>
+</form>
+{% endblock %}

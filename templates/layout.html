@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <!-- Import our custom stylesheet -->
+    <link rel="stylesheet" href="/static/css/styles.css">
+
+    <link rel="icon" href="/static/image/favicon.ico" type='image/x-icon' />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Import jquery 3.3.1 slim min -->
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Import Bootstrap bundle -->
+    <script src="/static/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Import our custom JavaScript  -->
+    <script src="/static/bootstrap/js/bootstrap.js"></script>
+
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark mb-3 fixed-top navbookscolor">
+        <a class="navbar-brand" href="#"><strong>MY PROPERTIES</strong></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        {% if session.user_id %}
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item search-button"><a class="nav-link" id="search-link" href="/search_book">Add a
+                        property</a></li>
+                <li class="nav-item"><a class="nav-link" href="/logout">log out</a></li>
+                <li class="nav-item"><a class="nav-link" href="/change_password">Change password</a></li>
+            </ul>
+        </div>
+        {%else%}
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="/login">Log in</a></li>
+                <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+            </ul>
+        </div>
+        {% endif %}
+    </nav>
+
+    <main>
+        <div class="container premain">
+            {% block premain %}
+            {% endblock %}
+            <div class="row">
+                <div class="col-lg-3 ou col-xl-4">
+                    <img id="books-img" src="/static/image/books.jpg">
+                    <img id="books-hor" src="/static/image/books-hor.jpg">
+                </div>
+                <div class="col-12 ou col-sm-12 ou col-md-12 ou col-lg-9 ou col-xl-8" id=col2>
+                    {% block main %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Optional JavaScript -->
+    {% block script %}{% endblock %}
+
+    <!-- <footer id="gr_credit" class="small text-center text-muted">
+        Data provided for free by Goodreads  <img src="/static/image/goodreads_icon.jpg" alt="Picture of Goodreads" width="20px" height="20px"/>
+    </footer> -->
+
+    </footer>
+    <!-- Footer -->
+    <div class="footer small text-center">
+        The pleasure of managing properties <img src="/properties/static/image/house.png" alt="Picture of a house"
+            width="20px" height="20px" />
+    </div>
+    </footer>
+
+</body>
+
+</html>

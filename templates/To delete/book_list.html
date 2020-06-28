@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Books
+{% endblock %}
+
+{% block main %}
+<div class="table-responsive w-auto">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">isbn</th>
+                <th scope="col">book</th>
+                <th scope="col">author</th>
+                <th scope="col">year</th>
+            </tr>
+        </thead>
+
+        {% for book in books %}
+        <tr>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.pb_year }}</td>
+            <td>
+                <a href="{{ url_for ('show_page', isbn_page=book.isbn) }}">page</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+</div>
+
+{% endblock %}

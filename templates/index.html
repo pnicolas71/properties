@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Books
+{% endblock %}
+
+{% block premain %}
+{% if success_message %}
+<div class="alert alert-success">
+    <strong>Success:</strong> {{ success_message }}
+</div>
+{%endif%}
+{% if error_message %}
+<div class="alert alert-danger">
+    <strong>Error:</strong> {{ error_message }}
+</div>
+{%endif%}
+{% endblock %}
+
+{% block main %}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block premain %}
+{% if success_message %}
+<div class="alert alert-success">
+    <strong>Success:</strong> {{ success_message }}
+</div>
+{%endif%}
+{% if error_message %}
+<div class="alert alert-danger">
+    <strong>Error:</strong> {{ error_message }}
+</div>
+{%endif%}
+{% endblock %}
+
+
+{% block main %}
+<form name="add_property" action="/add_property" method="post">
+    <div class="form-group">
+        <input autofocus class="form-control" id="prop_name" name="prop_name"
+            placeholder="Enter the property name" type="text">
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="prop_address" placeholder="Enter property address" type="text">
+    <div class="form-group">
+        <input class="form-control" name="prop_address2" placeholder="Enter property address (complement)" type="text">
+    <div class="form-group">            
+    <div class="form-group">
+        <input class="form-control" name="prop_zip" placeholder="Enter property zip code" type="text">
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="prop_city" placeholder="Enter property city" type="text">
+    </div>
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="prop_purchase_date"  placeholder="Enter property acquisition date" type="text">
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="prop_purchase_price"  placeholder="Enter property acquisition prince" type="text">
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="prop_initial_loan"  placeholder="Enter property initial loan amount" type="text">
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="prop_deposit"  placeholder="Enter property acq. deposit amount" type="text">
+    </div>
+    <button class="btn btn-primary" type="submit">Save property</button>
+</form>
+{% endblock %}
